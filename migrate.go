@@ -501,7 +501,10 @@ Check https://github.com/go-sql-driver/mysql#parsetime for more info.`)
 
 	err := dbMap.CreateTablesIfNotExists()
 	if err != nil {
-		return nil, err
+		// Ignore mysql error: Failed to create tables: Note 1050: Table 'some_table' already exists
+		if !strings.Contains(err.Error(), "Note 1050") {
+			return nil, err
+		}
 	}
 
 	return dbMap, nil
