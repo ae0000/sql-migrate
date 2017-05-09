@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rubenv/sql-migrate"
+	"github.com/ae0000/sql-migrate"
 )
 
 type RedoCommand struct {
